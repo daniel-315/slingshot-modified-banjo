@@ -811,6 +811,40 @@ The modification to `PostProcessor.java` allows this type of network to be proce
 
 ---
 
+## Using WSL or a Command Prompt Terminal
+
+A lab member independently tested this repository successfully using WSL launched through a Windows command-prompt workflow.
+
+When running the provided shell scripts from the repository directory, WSL/Linux may require `./` in front of the script name.
+
+For example, use:
+
+    ./compile_banjo.sh
+    ./run_top10.sh
+    ./run_top15.sh
+
+rather than:
+
+    compile_banjo.sh
+    run_top10.sh
+    run_top15.sh
+
+The `./` prefix tells the Linux shell to execute the script located in the current directory.
+
+This applies to the included shell scripts. The Java executable itself is still called normally as:
+
+    java
+
+If a command such as `run_top10.sh` is reported as "command not found" even though the file is present, first try:
+
+    ./run_top10.sh
+
+Also make sure you are inside the repository directory:
+
+    cd slingshot-modified-banjo
+
+---
+
 # 27. Quick Start for a New User
 
 For someone using a new Ubuntu or WSL environment, the shortest procedure is:
