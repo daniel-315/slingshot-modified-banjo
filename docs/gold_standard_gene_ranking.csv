@@ -1,0 +1,17 @@
+rank,gene,positive_outgoing,positive_incoming,total_positive_connectivity,selected_top10,selected_top15
+1,PPARG,7,28,35,yes,yes
+2,NFATC2,9,23,32,yes,yes
+3,BCL6,5,27,32,yes,yes
+4,MAFB,5,23,28,yes,yes
+5,PRDM1,0,23,23,yes,yes
+6,SNAI3,2,19,21,yes,yes
+7,EGR2,11,9,20,yes,yes
+8,ETS1,3,16,19,yes,yes
+9,STAT1,9,8,17,yes,yes
+10,FOS,8,9,17,yes,yes
+11,NFYC,13,3,16,no,yes
+12,IRF8,2,14,16,no,yes
+13,TCF3,14,1,15,no,yes
+14,PPARD,6,8,14,no,yes
+15,SNAI1,10,3,13,no,yes
+16,RREB1,9,4,13,no,no

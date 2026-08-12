@@ -1,0 +1,29 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# Java build artifacts
+modified_banjo/build/
+*.class
+
+# Temporary/backup files
+*.tmp
+*.bak
+*~
+
+# Reproduced results should not overwrite or clutter original results
+results/reproduced/
+results/smoke_test/
+
+# R session files
+.Rhistory
+.RData
+.Ruserdata

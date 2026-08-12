@@ -1,0 +1,124 @@
+MODULE main
+
+  VAR
+
+		PPARG: {-1, 0, 1};
+		NFATC2: {-1, 0, 1};
+		BCL6: {-1, 0, 1};
+		MAFB: {-1, 0, 1};
+		PRDM1: {-1, 0, 1};
+		SNAI3: {-1, 0, 1};
+		EGR2: {-1, 0, 1};
+		ETS1: {-1, 0, 1};
+		STAT1: {-1, 0, 1};
+		FOS: {-1, 0, 1};
+		NFYC: {-1, 0, 1};
+		IRF8: {-1, 0, 1};
+		TCF3: {-1, 0, 1};
+		PPARD: {-1, 0, 1};
+		SNAI1: {-1, 0, 1};
+
+
+    ASSIGN
+
+		init(PPARG) := {-1, 0};
+		init(NFATC2) := {-1, 0};
+		init(BCL6) := {-1, 0};
+		init(MAFB) := {-1, 0};
+		init(PRDM1) := {-1, 0};
+		init(SNAI3) := {-1, 0};
+		init(EGR2) := {-1, 0};
+		init(ETS1) := {-1, 0};
+		init(STAT1) := {-1, 0};
+		init(FOS) := {-1, 0};
+		init(NFYC) := {-1, 0};
+		init(IRF8) := {-1, 0};
+		init(TCF3) := {-1, 0};
+		init(PPARD) := {-1, 0};
+		init(SNAI1) := {-1, 0};
+
+	 next(PPARG) := 
+		 case 
+ 			  637*ETS1 > 0  : 1; 
+ 			  637*ETS1 = 0  : 0; 
+ 			  637*ETS1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(NFATC2) := NFATC2;
+
+	 next(BCL6) := 
+		 case 
+ 			  738*IRF8 > 0  : 1; 
+ 			  738*IRF8 = 0  : 0; 
+ 			  738*IRF8 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(MAFB) := 
+		 case 
+ 			  667*IRF8 > 0  : 1; 
+ 			  667*IRF8 = 0  : 0; 
+ 			  667*IRF8 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(PRDM1) := PRDM1;
+
+	 next(SNAI3) := 
+		 case 
+ 			  5171*SNAI1 > 0  : 1; 
+ 			  5171*SNAI1 = 0  : 0; 
+ 			  5171*SNAI1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(EGR2) := 
+		 case 
+ 			  -8*IRF8 > 0  : 1; 
+ 			  -8*IRF8 = 0  : 0; 
+ 			  -8*IRF8 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(ETS1) := 
+		 case 
+ 			  2901*IRF8 +  4083*PPARG > 0  : 1; 
+ 			  2901*IRF8 +  4083*PPARG = 0  : 0; 
+ 			  2901*IRF8 +  4083*PPARG < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(STAT1) := STAT1;
+
+	 next(FOS) := FOS;
+
+	 next(NFYC) := 
+		 case 
+ 			  1532*ETS1 > 0  : 1; 
+ 			  1532*ETS1 = 0  : 0; 
+ 			  1532*ETS1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(IRF8) := 
+		 case 
+ 			  -2595*ETS1 > 0  : 1; 
+ 			  -2595*ETS1 = 0  : 0; 
+ 			  -2595*ETS1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(TCF3) := TCF3;
+
+	 next(PPARD) := PPARD;
+
+	 next(SNAI1) := 
+		 case 
+ 			  5137*PRDM1 > 0  : 1; 
+ 			  5137*PRDM1 = 0  : 0; 
+ 			  5137*PRDM1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+

@@ -1,0 +1,7 @@
+digraph {
+node[shape=box];
+    0 [label="PPARG"];
+    7 [label="ETS1"];
+7->0[label=637];
+}
+
