@@ -85,14 +85,12 @@ slingshot-modified-banjo/
     |   |-- banjo_input_top10.txt
     |   |-- banjo_settings_top10.txt
     |   |-- top10_genes.txt
-    |   `-- all_networks/
     |
     `-- top15/
         |-- banjo_full_report.txt
         |-- banjo_input_top15.txt
         |-- banjo_settings_top15.txt
         |-- top15_genes.txt
-        `-- all_networks/
 ~~~
 
 The Slingshot results are organized under `results/slingshot/`:
@@ -641,7 +639,7 @@ The Top-10 results therefore contain two network outputs.
 
 They are preserved under:
 
-    results/slingshot/top10/all_networks/
+    results/slingshot/top10/
 
 The full Banjo report is:
 
@@ -677,7 +675,7 @@ The five network scores were approximately:
 
 The full set of Top-15 outputs is stored under:
 
-    results/slingshot/top15/all_networks/
+    results/slingshot/top15/
 
 The full Banjo report is:
 
