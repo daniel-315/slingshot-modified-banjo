@@ -1,4 +1,4 @@
-# Slingshot + Modified Banjo Gene Regulatory Network Analysis
+# Slingshot + Monocle 3 + Modified Banjo Gene Regulatory Network Analysis
 
 This repository contains the code, input files, configuration files, and results used to infer dynamic gene regulatory networks from Slingshot pseudotime-ordered single-cell gene-expression data using a modified version of Banjo (Bayesian Network Inference with Java Objects).
 
@@ -462,13 +462,13 @@ If these commands print version information, the main required software is insta
 
 Using Git:
 
-    git clone <REPOSITORY-URL>
+    git clone https://github.com/daniel-315/slingshot-modified-banjo.git
 
 Then enter the repository:
 
     cd slingshot-modified-banjo
 
-Replace `<REPOSITORY-URL>` with the actual private GitHub repository URL.
+Replace `https://github.com/daniel-315/slingshot-modified-banjo.git` with the actual private GitHub repository URL.
 
 Alternatively, the repository can be downloaded as a ZIP file from GitHub and extracted manually.
 
@@ -854,7 +854,7 @@ For someone using a new Ubuntu or WSL environment, the shortest procedure is:
 
 Then clone the repository:
 
-    git clone <REPOSITORY-URL>
+    git clone https://github.com/daniel-315/slingshot-modified-banjo.git
     cd slingshot-modified-banjo
 
 Compile Banjo:
@@ -881,6 +881,7 @@ The reproduced networks will then appear under:
 The workflow uses:
 
 - Slingshot for trajectory and pseudotime inference
+- Monocle 3 for an independent pseudotime and trajectory comparison
 - R for single-cell data processing and gene subsetting
 - Banjo 2.2.0 for dynamic Bayesian network inference
 - Java for compiling and running Banjo
@@ -936,3 +937,520 @@ The workflow represented in this repository can be summarized as:
 The Top-10 and Top-15 subsets were chosen according to a documented positive Gold Standard connectivity criterion instead of random selection.
 
 All original Banjo results are preserved so that subsequent reruns do not overwrite the networks used for the reported project results.
+
+---
+
+# 31. Monocle 3 Comparison Analysis
+
+A second pseudotime method was added to determine how sensitive the inferred
+dynamic Bayesian networks are to the pseudotime ordering method.
+
+The comparison was designed so that the pseudotime method is the primary
+difference between the analyses.
+
+The four network analyses are:
+
+1. Slingshot Top-10
+2. Monocle 3 Top-10
+3. Slingshot Top-15
+4. Monocle 3 Top-15
+
+The same cells, expression matrix, gene-selection criterion, selected genes,
+Banjo discretization policy, Markov lag, search algorithm, maximum parent
+count, scoring method, and five-minute search duration were used wherever
+applicable.
+
+---
+
+# 32. Monocle 3 Pseudotime Method
+
+The Monocle comparison used:
+
+- R 4.3.3
+- Monocle 3 version 1.3.1
+- 959 cells
+- 45 measured genes
+- Cell 591 excluded, matching the primary Slingshot analysis
+- 10 PCA dimensions
+- scaled PCA
+- UMAP dimensionality reduction
+- Monocle clustering
+- principal graph learning
+- programmatic trajectory rooting using the earliest experimental time point
+
+The original expression matrix contains continuous non-integer expression
+values rather than raw count values.
+
+For that reason, the Monocle preprocessing step used:
+
+    norm_method = "none"
+
+This avoids applying an additional count-style normalization to expression
+values that were already processed.
+
+Scaling remained enabled for PCA:
+
+    scaling = TRUE
+
+The Monocle trajectory was generated with:
+
+    preprocess_cds(...)
+    reduce_dimension(...)
+    cluster_cells(...)
+    learn_graph(...)
+    order_cells(...)
+
+To obtain one pseudotime coordinate across the same 959 cells used by the
+Slingshot/Banjo workflow, the graph was learned with:
+
+    use_partition = FALSE
+
+The trajectory root was not manually selected.
+
+Instead, the principal graph node containing the greatest number of cells
+from the earliest experimental time point, h = 0, was selected
+programmatically.
+
+The selected root principal node was:
+
+    Y_13
+
+There were 120 cells at h = 0.
+
+Monocle assigned finite pseudotime to all 959 analyzed cells.
+
+The Monocle pseudotime range was:
+
+    0 to 15.09055
+
+The Spearman correlation between Monocle pseudotime and experimental time was:
+
+    rho = 0.6367
+
+For comparison, the primary Slingshot ordering had a Spearman correlation of
+approximately:
+
+    rho = 0.718
+
+Both pseudotime methods therefore produced positive agreement with the known
+experimental-time progression, although Slingshot showed the stronger
+monotonic association in this dataset.
+
+---
+
+# 33. Monocle 3 v1.3.1 Partition Compatibility Fix
+
+During clustering with Monocle 3 version 1.3.1, the analysis encountered an
+igraph error because the partition adjacency matrix contained NaN values.
+
+This occurred when the partition calculation encountered a zero
+between-cluster-edge case.
+
+A small runtime compatibility fix was added to:
+
+    scripts/pseudotime/10_run_monocle3.R
+
+The fix converts NaN entries in the relevant partition matrices to zero
+before the graph is passed to igraph.
+
+This follows the behavior used by newer upstream Monocle 3 source code for
+the same zero-total-edge condition.
+
+The compatibility fix does not modify:
+
+- expression values
+- selected cells
+- selected genes
+- PCA dimensionality
+- UMAP coordinates
+- Banjo settings
+- Banjo scoring
+- Banjo network search
+
+It only prevents the older Monocle 3 partition implementation from failing
+during graph construction.
+
+After the fix, Monocle produced two clusters:
+
+    Cluster 1: 861 cells
+    Cluster 2: 98 cells
+
+All 959 cells subsequently received finite pseudotime values.
+
+---
+
+# 34. Monocle Files Included in This Repository
+
+The Monocle analysis scripts are:
+
+    scripts/pseudotime/10_run_monocle3.R
+    scripts/pseudotime/11_make_monocle3_banjo_inputs.R
+
+The exported pseudotime ordering is:
+
+    data/pseudotime/monocle3_order.csv
+
+The trajectory figures are:
+
+    results/monocle3/trajectory/monocle3_trajectory_pseudotime.png
+    results/monocle3/trajectory/monocle3_trajectory_experimental_time.png
+
+The Banjo input matrices are:
+
+    data/banjo_inputs/banjo_monocle3_top10.txt
+    data/banjo_inputs/banjo_monocle3_top15.txt
+
+The portable Banjo settings files are:
+
+    configs/banjo_monocle3_top10.txt
+    configs/banjo_monocle3_top15.txt
+
+The original five-minute Banjo results are preserved under:
+
+    results/monocle3/top10/
+    results/monocle3/top15/
+
+---
+
+# 35. Controlled Top-10 and Top-15 Comparison
+
+The Monocle analysis uses exactly the same selected gene sets as the
+Slingshot analysis.
+
+## Top-10 genes
+
+    PPARG
+    NFATC2
+    BCL6
+    MAFB
+    PRDM1
+    SNAI3
+    EGR2
+    ETS1
+    STAT1
+    FOS
+
+## Top-15 genes
+
+The Top-15 set contains the same Top-10 genes plus:
+
+    NFYC
+    IRF8
+    TCF3
+    PPARD
+    SNAI1
+
+This is important because changing both the pseudotime method and the gene
+set would make the resulting networks difficult to interpret.
+
+Here, the selected genes remain fixed while the cell ordering changes.
+
+---
+
+# 36. Banjo Settings for the Monocle Comparison
+
+The Monocle-ordered input matrices used the same primary Banjo settings as
+the Slingshot analyses:
+
+    observationCount = 959
+    minMarkovLag = 1
+    maxMarkovLag = 1
+    nBestNetworks = 5
+    maxTime = 5 m
+    computeInfluenceScores = yes
+
+Additional shared settings include:
+
+    DBN mandatory identity lag = 1
+    maximum parent count = 5
+    discretization policy = i2
+    searcher = SearcherGreedy
+    evaluator = EvaluatorBDe
+
+Because a lag of one is used, Banjo learns relationships from one position
+in the pseudotime-ordered sequence to the following position.
+
+---
+
+# 37. Top-10 Results: Slingshot Versus Monocle 3
+
+## Slingshot Top-10
+
+The original Slingshot Top-10 search returned two non-identical networks.
+
+Best score:
+
+    -2262.2199
+
+The best network contained one additional cross-gene lag-1 relationship:
+
+    ETS1 -> PPARG    +0.0637
+
+The second returned network contained no additional cross-gene edges beyond
+the mandatory identity-lag structure.
+
+## Monocle 3 Top-10
+
+The Monocle Top-10 run returned all five requested non-identical networks.
+
+Scores:
+
+    Network 1: -2254.2060
+    Network 2: -2254.2629
+    Network 3: -2254.4318
+    Network 4: -2254.7464
+    Network 5: -2255.3654
+
+Banjo examined:
+
+    55,967,761 networks
+
+in:
+
+    5.0 minutes
+
+with:
+
+    17,274 restarts
+
+The best Monocle Top-10 network contained these additional cross-gene
+lag-1 relationships:
+
+    ETS1  -> PPARG    +0.0066
+    ETS1  -> BCL6     +0.4659
+    PRDM1 -> BCL6     +0.5064
+    ETS1  -> MAFB     +0.1014
+    PPARG -> SNAI3    -0.0278
+    STAT1 -> EGR2     +0.0070
+    PRDM1 -> ETS1     +0.4147
+    ETS1  -> STAT1    -0.2147
+
+The exact directed edge shared by the two best Top-10 networks is:
+
+    ETS1 -> PPARG
+
+The much denser Monocle Top-10 result demonstrates that the inferred network
+can be sensitive to the pseudotime ordering supplied to the dynamic Bayesian
+network procedure.
+
+---
+
+# 38. Top-15 Results: Slingshot Versus Monocle 3
+
+## Slingshot Top-15
+
+The Slingshot Top-15 analysis returned five non-identical networks.
+
+Scores:
+
+    Network 1: -3889.6251
+    Network 2: -3889.8552
+    Network 3: -3891.3869
+    Network 4: -3891.6365
+    Network 5: -3892.2044
+
+The best Slingshot Top-15 network contained the following additional
+cross-gene lag-1 relationships:
+
+    ETS1  -> PPARG    +0.0637
+    IRF8  -> BCL6     +0.2900
+    PPARG -> BCL6     +0.1870
+    IRF8  -> MAFB     +0.0667
+    SNAI1 -> SNAI3    +0.5171
+    IRF8  -> EGR2     approximately -0.0008
+    IRF8  -> ETS1     +0.2901
+    PPARG -> ETS1     +0.4083
+    ETS1  -> NFYC     +0.1532
+    ETS1  -> IRF8     -0.2595
+    PPARG -> TCF3     -0.1029
+    PRDM1 -> SNAI1    +0.5137
+
+## Monocle 3 Top-15
+
+The Monocle Top-15 analysis also returned five non-identical networks.
+
+Scores:
+
+    Network 1: -3863.1410
+    Network 2: -3863.2844
+    Network 3: -3864.0546
+    Network 4: -3864.8857
+    Network 5: -3865.7966
+
+Banjo examined:
+
+    62,620,951 networks
+
+in:
+
+    5.0 minutes
+
+with:
+
+    14,909 restarts
+
+The best Monocle Top-15 network contained:
+
+    ETS1  -> PPARG    +0.0066
+    PPARD -> BCL6     +0.2185
+    ETS1  -> MAFB     +0.1014
+    IRF8  -> SNAI3    +0.2315
+    STAT1 -> EGR2     +0.0070
+    IRF8  -> ETS1     +0.0059
+    ETS1  -> STAT1    -0.2147
+    ETS1  -> NFYC     +0.1889
+    ETS1  -> IRF8     -0.2991
+    IRF8  -> PPARD    -0.0839
+    PPARG -> SNAI1    -0.1958
+    BCL6  -> SNAI1    +0.1969
+
+The following directed edges occur in both best Top-15 networks:
+
+    ETS1 -> PPARG
+    IRF8 -> ETS1
+    ETS1 -> NFYC
+    ETS1 -> IRF8
+
+The direction and sign also agree for these shared edges:
+
+    ETS1 -> PPARG    positive
+    IRF8 -> ETS1     positive
+    ETS1 -> NFYC     positive
+    ETS1 -> IRF8     negative
+
+Other inferred edges depend strongly on the pseudotime ordering.
+
+For example:
+
+Slingshot inferred:
+
+    IRF8  -> BCL6
+    PPARG -> BCL6
+
+whereas Monocle inferred:
+
+    PPARD -> BCL6
+
+Slingshot inferred:
+
+    IRF8 -> MAFB
+
+whereas Monocle inferred:
+
+    ETS1 -> MAFB
+
+These differences provide direct evidence that downstream dynamic Bayesian
+network inference is sensitive to the pseudotime trajectory supplied as the
+temporal ordering.
+
+---
+
+# 39. Interpretation of the Pseudotime Comparison
+
+The comparison supports two conclusions.
+
+First, both Slingshot and Monocle 3 produced pseudotime coordinates that
+positively follow the known experimental-time progression.
+
+The correlations were:
+
+    Slingshot: rho approximately 0.718
+    Monocle 3: rho = 0.6367
+
+Second, the inferred Banjo networks were not identical.
+
+Several relationships were stable across pseudotime methods, particularly
+in the 15-gene analysis, while other edges changed substantially.
+
+The shared edges can be viewed as comparatively robust to the choice of
+pseudotime method, whereas method-specific edges should be interpreted more
+cautiously.
+
+The absolute Banjo BDe scores should not by themselves be interpreted as
+proof that one pseudotime method is biologically superior to the other.
+Within each Banjo search, the score ranks candidate networks for that
+particular ordered dataset.
+
+The purpose of this comparison is therefore network sensitivity and
+agreement, not simply selecting the pseudotime method with the numerically
+highest Banjo score.
+
+The Top-10 and Top-15 genes were selected using connectivity information from
+the supplied Gold Standard. Consequently, the same Gold Standard should not
+be treated as a completely independent validation set for the selected-gene
+analysis without acknowledging this selection dependence.
+
+---
+
+# 40. Reproducing the Monocle Banjo Runs
+
+First compile Modified Banjo if necessary:
+
+    ./compile_banjo.sh
+
+Run the Monocle Top-10 network search:
+
+    ./run_monocle3_top10.sh
+
+Run the Monocle Top-15 network search:
+
+    ./run_monocle3_top15.sh
+
+Reproduced outputs are written to:
+
+    results/reproduced/monocle3/top10/
+    results/reproduced/monocle3/top15/
+
+These directories are separate from the preserved original Monocle results:
+
+    results/monocle3/top10/
+    results/monocle3/top15/
+
+This prevents a reproducibility test from overwriting the network files used
+for the reported comparison.
+
+To regenerate the Monocle trajectory and Banjo input ordering from the
+original expression matrix, use:
+
+    Rscript scripts/pseudotime/10_run_monocle3.R
+    Rscript scripts/pseudotime/11_make_monocle3_banjo_inputs.R
+
+These R scripts expect the original `rna.csv` expression matrix to be
+available in the working directory.
+
+---
+
+# 41. Updated Comparison Workflow
+
+The expanded workflow is:
+
+    Original single-cell RNA expression
+                    |
+          +---------+---------+
+          |                   |
+          v                   v
+      Slingshot           Monocle 3
+          |                   |
+          v                   v
+     pseudotime          pseudotime
+      ordering            ordering
+          |                   |
+          +---------+---------+
+                    |
+              same 959 cells
+                    |
+              +-----+-----+
+              |           |
+              v           v
+           Top 10       Top 15
+              |           |
+              v           v
+        Modified Banjo Modified Banjo
+              |           |
+              v           v
+          compare networks across
+           pseudotime methods
+
+This design keeps the selected cells and genes fixed while changing the
+pseudotime ordering method, allowing the downstream Banjo networks to be
+compared directly.

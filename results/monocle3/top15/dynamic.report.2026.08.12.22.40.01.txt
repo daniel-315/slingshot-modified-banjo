@@ -1,0 +1,1171 @@
+-----------------------------------------------------------------------------
+- Banjo                        Bayesian Network Inference with Java Objects -
+- Release 2.2.0                                                 15 Apr 2008 -
+- Licensed from Duke University                                             -
+- Copyright (c) 2005-08 by Alexander J. Hartemink                           -
+- All rights reserved                                                       -
+-----------------------------------------------------------------------------
+- Project:                                              banjo dynamic example
+- User:                                                                  demo
+- Dataset:                                 20-vars-2000-temporal-observations
+- Notes:                                   dynamic bayesian network inference
+-----------------------------------------------------------------------------
+- Settings file:                                                             
+-----------------------------------------------------------------------------
+- Input directory:                              data/release2.0/dynamic/input
+- Observations file:                                 banjo_monocle3_top15.txt
+- Number of observations (in file):                                       959
+- Number of observations used for learning DBN:                           958
+- Number of variables:                                                     15
+- Variable names:                                                      inFile
+- Discretization policy:                                                   i2
+- Exceptions to the discretization policy:                               none
+-----------------------------------------------------------------------------
+- Initial structure file:                                                    
+- 'Must be present' edges file:                                              
+- 'Must not be present' edges file:                                          
+- Min. Markov lag:                                                          1
+- Max. Markov lag:                                                          1
+- DBN mandatory identity lag(s):                                            1
+- Max. parent count:                                                        5
+- Equivalent sample size for Dirichlet parameter prior:                   1.0
+-----------------------------------------------------------------------------
+- Searcher:                                                    SearcherGreedy
+- Proposer:                                             ProposerAllLocalMoves
+- Evaluator:                                        defaulted to EvaluatorBDe
+- Decider:                                         defaulted to DeciderGreedy
+-----------------------------------------------------------------------------
+- Pre-compute logGamma:                                                   yes
+- Cache:                                                           fastLevel2
+- Cycle checking method:         Depth-first Search with Shmueli Optimization
+-----------------------------------------------------------------------------
+- Min. proposed networks after high score:                               1000
+- Min. proposed networks before restart:                                 3000
+- Max. proposed networks before restart:                                 5000
+- Restart method:                                          use random network
+-   with max. parent count:                                                 5
+-----------------------------------------------------------------------------
+- Output directory:          data/release2.0/dynamic/output_monocle3_top15_5m
+- Report file:                         dynamic.report.2026.08.12.22.40.01.txt
+- Number of best networks tracked:                                          5
+- Best networks are:                                             nonidentical
+- Max. time:                                                            5.0 m
+- Min. networks before checking:                                         1000
+- Screen reporting interval:                                           20.0 s
+- File reporting interval:                                              1.0 m
+-----------------------------------------------------------------------------
+- Compute influence scores:                                               yes
+- Compute consensus graph:                                                 no
+- Create consensus graph as HTML:                                          no
+- Create 'dot' output:                                                    yes
+- Location of 'dot':                                             /usr/bin/dot
+-----------------------------------------------------------------------------
+- XML output directory:      data/release2.0/dynamic/output_monocle3_top15_5m
+- XML Report file:                                                           
+- XML settings to export:                                                    
+- XML parser:                             org.apache.xerces.parsers.SAXParser
+- Banjo XML format version:                                               1.0
+-----------------------------------------------------------------------------
+- Seed for starting search:                                     1786592400996
+-----------------------------------------------------------------------------
+- Number of threads:                                                        1
+-----------------------------------------------------------------------------
+
+Memory info before starting the search: Banjo is using 2 mb of memory
+
+-----------------------------------------------------------------------------
+- Pre-processing                                        Discretization report
+-----------------------------------------------------------------------------
+ Variable | Discr. | Min. Val. | Max. Val. |  Orig. |  Used  |               
+          |        |           |           | points | points |               
+-----------------------------------------------------------------------------
+      0   |    i2  |  3.5107244  |  65.8505254  |   959  |     2  |
+      1   |    i2  |  3.5108074  |  21.3126005  |   959  |     2  |
+      2   |    i2  |  3.6266033  |  74.9679823  |   959  |     2  |
+      3   |    i2  |  3.54798  |  70.2910064  |   959  |     2  |
+      4   |    i2  |  3.54798  |  43.2579135  |   959  |     2  |
+      5   |    i2  |  3.5107244  |  65.9011914  |   959  |     2  |
+      6   |    i2  |  3.5107244  |  97.2511836  |   959  |     2  |
+      7   |    i2  |  3.4898443  |  17.8418598  |   959  |     2  |
+      8   |    i2  |  4.4823824  |  23.077047  |   959  |     2  |
+      9   |    i2  |  3.6266033  |  36.5958631  |   959  |     2  |
+     10   |    i2  |  3.6361336  |  35.9086599  |   959  |     2  |
+     11   |    i2  |  3.5108074  |  20.9226229  |   959  |     2  |
+     12   |    i2  | 3.684358  |  25.0676823  |   959  |     2  |
+     13   |    i2  | 3.808762  |  37.4753196  |   959  |     2  |
+     14   |    i2  |  3.5107244  |  30.6392127  |   959  |     2  |
+-----------------------------------------------------------------------------
+
+Prep. time used: 58.0 ms
+Beginning to search: expect a status report every 20.0 s
+
+Status:  Networks 4179001
+         Time     20.0 s (6.6% of max. 5.0 m)
+         Restarts 994
+         Banjo is using 8 mb of memory
+
+Status:  Networks 8347501
+         Time     40.0 s (13.3% of max. 5.0 m)
+         Restarts 1987
+         Banjo is using 8 mb of memory
+
+Status:  Networks 12457201
+         Time     1.0 m (20.0% of max. 5.0 m)
+         Restarts 2965
+         Banjo is using 8 mb of memory
+
+-----------------------------------------------------------------------------
+- Intermediate report                                  Best network(s) so far
+-----------------------------------------------------------------------------
+
+Network #1, score: -3863.1410, first found at iteration 2521
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   2 11 13        
+14   1:   3 0 2 14       
+
+Network #2, score: -3863.2844, first found at iteration 2311
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #3, score: -3864.0546, first found at iteration 2101
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #4, score: -3864.8857, first found at iteration 1891
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #5, score: -3865.7966, first found at iteration 1681
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   1 6            
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+-----------------------------------------------------------------------------
+
+
+Status:  Networks 16643551
+         Time     1.33 m (26.6% of max. 5.0 m)
+         Restarts 3962
+         Banjo is using 8 mb of memory
+
+Status:  Networks 20814151
+         Time     1.67 m (33.3% of max. 5.0 m)
+         Restarts 4955
+         Banjo is using 8 mb of memory
+
+Status:  Networks 24994201
+         Time     2.0 m (40.0% of max. 5.0 m)
+         Restarts 5950
+         Banjo is using 8 mb of memory
+
+-----------------------------------------------------------------------------
+- Intermediate report                                  Best network(s) so far
+-----------------------------------------------------------------------------
+
+Network #1, score: -3863.1410, first found at iteration 2521
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   2 11 13        
+14   1:   3 0 2 14       
+
+Network #2, score: -3863.2844, first found at iteration 2311
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #3, score: -3864.0546, first found at iteration 2101
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #4, score: -3864.8857, first found at iteration 1891
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #5, score: -3865.7966, first found at iteration 1681
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   1 6            
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+-----------------------------------------------------------------------------
+
+
+Status:  Networks 29157451
+         Time     2.33 m (46.6% of max. 5.0 m)
+         Restarts 6942
+         Banjo is using 8 mb of memory
+
+Status:  Networks 33327001
+         Time     2.67 m (53.3% of max. 5.0 m)
+         Restarts 7934
+         Banjo is using 8 mb of memory
+
+Status:  Networks 37514401
+         Time     3.0 m (60.0% of max. 5.0 m)
+         Restarts 8931
+         Banjo is using 9 mb of memory
+
+-----------------------------------------------------------------------------
+- Intermediate report                                  Best network(s) so far
+-----------------------------------------------------------------------------
+
+Network #1, score: -3863.1410, first found at iteration 2521
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   2 11 13        
+14   1:   3 0 2 14       
+
+Network #2, score: -3863.2844, first found at iteration 2311
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #3, score: -3864.0546, first found at iteration 2101
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #4, score: -3864.8857, first found at iteration 1891
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #5, score: -3865.7966, first found at iteration 1681
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   1 6            
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+-----------------------------------------------------------------------------
+
+
+Status:  Networks 41687101
+         Time     3.33 m (66.6% of max. 5.0 m)
+         Restarts 9925
+         Banjo is using 9 mb of memory
+
+Status:  Networks 45872401
+         Time     3.67 m (73.3% of max. 5.0 m)
+         Restarts 10921
+         Banjo is using 9 mb of memory
+
+Status:  Networks 50079751
+         Time     4.0 m (80.0% of max. 5.0 m)
+         Restarts 11923
+         Banjo is using 9 mb of memory
+
+-----------------------------------------------------------------------------
+- Intermediate report                                  Best network(s) so far
+-----------------------------------------------------------------------------
+
+Network #1, score: -3863.1410, first found at iteration 2521
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   2 11 13        
+14   1:   3 0 2 14       
+
+Network #2, score: -3863.2844, first found at iteration 2311
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #3, score: -3864.0546, first found at iteration 2101
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #4, score: -3864.8857, first found at iteration 1891
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #5, score: -3865.7966, first found at iteration 1681
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   1 6            
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+-----------------------------------------------------------------------------
+
+
+Status:  Networks 54232501
+         Time     4.33 m (86.6% of max. 5.0 m)
+         Restarts 12912
+         Banjo is using 9 mb of memory
+
+Status:  Networks 58429351
+         Time     4.67 m (93.3% of max. 5.0 m)
+         Restarts 13911
+         Banjo is using 9 mb of memory
+
+Status:  Networks 62620951
+         Time     5.0 m (100.0% of max. 5.0 m)
+         Restarts 14909
+         Banjo is using 9 mb of memory
+
+-----------------------------------------------------------------------------
+- Intermediate report                                  Best network(s) so far
+-----------------------------------------------------------------------------
+
+Network #1, score: -3863.1410, first found at iteration 2521
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   2 11 13        
+14   1:   3 0 2 14       
+
+Network #2, score: -3863.2844, first found at iteration 2311
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #3, score: -3864.0546, first found at iteration 2101
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #4, score: -3864.8857, first found at iteration 1891
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #5, score: -3865.7966, first found at iteration 1681
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   1 6            
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+-----------------------------------------------------------------------------
+
+
+
+
+-----------------------------------------------------------------------------
+- Final report                                          Best networks overall
+-----------------------------------------------------------------------------
+These are the 5 top-scoring non-identical networks found during the search: 
+
+Network #1, score: -3863.1410, first found at iteration 2521
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   2 11 13        
+14   1:   3 0 2 14       
+
+Network #2, score: -3863.2844, first found at iteration 2311
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #3, score: -3864.0546, first found at iteration 2101
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #4, score: -3864.8857, first found at iteration 1891
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #5, score: -3865.7966, first found at iteration 1681
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   1 6            
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+
+-----------------------------------------------------------------------------
+- Search Statistics                                                          
+-----------------------------------------------------------------------------
+
+Statistics collected in searcher 'SearcherGreedy':
+  Number of networks examined: 62620951
+  Total time used: 5.0 m
+  High score: -3863.1410, first found at iteration 2521
+  Number of restarts: 14909
+
+Statistics collected in proposer 'ProposerAllLocalMoves':
+  Additions -- proposed:    60205590
+  Deletions -- proposed:    2415360
+  Reversals -- proposed:    0 (min. Markov lag = 1)
+
+Statistics collected in cycle checker 'CycleCheckerCheckThenApply':
+  Additions -- no cyclicity test necessary
+  Deletions -- no cyclicity test necessary
+  Reversals -- none proposed
+
+Statistics collected in evaluator 'EvaluatorBDe':
+  Scores computed:          26345573
+  Scores (cache)            placed         fetched        
+      with 0 parents:       0              0              
+      with 1 parents:       15             2281180        
+      with 2 parents:       210            31951835       
+      with 3 parents:       24198368       2564432        
+      with 4 parents:       2146980        0              
+      with 5 parents:       0              0              
+
+Statistics collected in decider 'DeciderGreedy':
+  Additions -- considered:  298195,  better score:  178920
+  Deletions -- considered:  0,  better score:  0
+  Reversals -- considered:  0 (min. Markov lag = 1)
+
+No Statistics collected in equivalence checker 'EquivalenceCheckerSkip'.
+
+Memory info after completing the search: Banjo is using 9 mb of memory
+
+
+Network #1, score: -3863.1410, found by thread 1
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   2 11 13        
+14   1:   3 0 2 14       
+
+Network #2, score: -3863.2844, found by thread 1
+15
+ 0   1:   2 0 7          
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #3, score: -3864.0546, found by thread 1
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   2 5 11         
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #4, score: -3864.8857, found by thread 1
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   2 6 8          
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+Network #5, score: -3865.7966, found by thread 1
+15
+ 0   1:   1 0            
+ 1   1:   1 1            
+ 2   1:   2 2 13         
+ 3   1:   2 3 7          
+ 4   1:   1 4            
+ 5   1:   1 5            
+ 6   1:   1 6            
+ 7   1:   2 7 11         
+ 8   1:   2 7 8          
+ 9   1:   1 9            
+10   1:   2 7 10         
+11   1:   2 7 11         
+12   1:   1 12           
+13   1:   1 13           
+14   1:   3 0 2 14       
+
+-----------------------------------------------------------------------------
+- Post-processing                                            Influence scores
+-----------------------------------------------------------------------------
+
+Influence score for   (7,1) ->   (0,0)   .0066
+Influence score for   (0,1) ->   (0,0)   .0995
+Influence score for   (1,1) ->   (1,0)   .1869
+Influence score for  (13,1) ->   (2,0)   .2185
+Influence score for   (2,1) ->   (2,0)   .1357
+Influence score for   (7,1) ->   (3,0)   .1014
+Influence score for   (3,1) ->   (3,0)   .0300
+Influence score for   (4,1) ->   (4,0)   .2292
+Influence score for  (11,1) ->   (5,0)   .2315
+Influence score for   (5,1) ->   (5,0)   .2605
+Influence score for   (8,1) ->   (6,0)   .0070
+Influence score for   (6,1) ->   (6,0)   .0196
+Influence score for  (11,1) ->   (7,0)   .0059
+Influence score for   (7,1) ->   (7,0)   .4345
+Influence score for   (8,1) ->   (8,0)   .1048
+Influence score for   (7,1) ->   (8,0)   -.2147
+Influence score for   (9,1) ->   (9,0)   .0653
+Influence score for  (10,1) ->  (10,0)   .1426
+Influence score for   (7,1) ->  (10,0)   .1889
+Influence score for  (11,1) ->  (11,0)   .2563
+Influence score for   (7,1) ->  (11,0)   -.2991
+Influence score for  (12,1) ->  (12,0)   .0981
+Influence score for  (13,1) ->  (13,0)   .0839
+Influence score for  (11,1) ->  (13,0)   -.0839
+Influence score for  (14,1) ->  (14,0)   .1851
+Influence score for   (2,1) ->  (14,0)   .1969
+Influence score for   (0,1) ->  (14,0)   -.1958
+-----------------------------------------------------------------------------
+- Post-processing                                  DOT graphics format output
+-----------------------------------------------------------------------------
+digraph {
+node[shape=box];
+    0 [label="PPARG"];
+    2 [label="BCL6"];
+    3 [label="MAFB"];
+    5 [label="SNAI3"];
+    6 [label="EGR2"];
+    7 [label="ETS1"];
+    8 [label="STAT1"];
+    10 [label="NFYC"];
+    11 [label="IRF8"];
+    13 [label="PPARD"];
+    14 [label="SNAI1"];
+7->0[label=66];
+13->2[label=2185];
+7->3[label=1014];
+11->5[label=2315];
+8->6[label=70];
+11->7[label=59];
+7->8[arrowhead = dot, label=-2147];
+7->10[label=1889];
+7->11[arrowhead = dot, label=-2991];
+11->13[arrowhead = dot, label=-839];
+0->14[arrowhead = dot, label=-1958];
+2->14[label=1969];
+}
+
+-----------------------------------------------------------------------------
+- Post-processing                                            Influence scores
+-----------------------------------------------------------------------------
+
+Influence score for   (7,1) ->   (0,0)   .0066
+Influence score for   (0,1) ->   (0,0)   .0995
+Influence score for   (1,1) ->   (1,0)   .1869
+Influence score for  (13,1) ->   (2,0)   .2185
+Influence score for   (2,1) ->   (2,0)   .1357
+Influence score for   (7,1) ->   (3,0)   .1014
+Influence score for   (3,1) ->   (3,0)   .0300
+Influence score for   (4,1) ->   (4,0)   .2292
+Influence score for  (11,1) ->   (5,0)   .2315
+Influence score for   (5,1) ->   (5,0)   .2605
+Influence score for   (8,1) ->   (6,0)   .0070
+Influence score for   (6,1) ->   (6,0)   .0196
+Influence score for  (11,1) ->   (7,0)   .0059
+Influence score for   (7,1) ->   (7,0)   .4345
+Influence score for   (8,1) ->   (8,0)   .1048
+Influence score for   (7,1) ->   (8,0)   -.2147
+Influence score for   (9,1) ->   (9,0)   .0653
+Influence score for  (10,1) ->  (10,0)   .1426
+Influence score for   (7,1) ->  (10,0)   .1889
+Influence score for  (11,1) ->  (11,0)   .2563
+Influence score for   (7,1) ->  (11,0)   -.2991
+Influence score for  (12,1) ->  (12,0)   .0981
+Influence score for  (13,1) ->  (13,0)   .1121
+Influence score for  (14,1) ->  (14,0)   .1851
+Influence score for   (2,1) ->  (14,0)   .1969
+Influence score for   (0,1) ->  (14,0)   -.1958
+-----------------------------------------------------------------------------
+- Post-processing                                  DOT graphics format output
+-----------------------------------------------------------------------------
+digraph {
+node[shape=box];
+    0 [label="PPARG"];
+    2 [label="BCL6"];
+    3 [label="MAFB"];
+    5 [label="SNAI3"];
+    6 [label="EGR2"];
+    7 [label="ETS1"];
+    8 [label="STAT1"];
+    10 [label="NFYC"];
+    11 [label="IRF8"];
+    13 [label="PPARD"];
+    14 [label="SNAI1"];
+7->0[label=66];
+13->2[label=2185];
+7->3[label=1014];
+11->5[label=2315];
+8->6[label=70];
+11->7[label=59];
+7->8[arrowhead = dot, label=-2147];
+7->10[label=1889];
+7->11[arrowhead = dot, label=-2991];
+0->14[arrowhead = dot, label=-1958];
+2->14[label=1969];
+}
+
+-----------------------------------------------------------------------------
+- Post-processing                                            Influence scores
+-----------------------------------------------------------------------------
+
+Influence score for   (0,1) ->   (0,0)   .1151
+Influence score for   (1,1) ->   (1,0)   .1869
+Influence score for  (13,1) ->   (2,0)   .2185
+Influence score for   (2,1) ->   (2,0)   .1357
+Influence score for   (7,1) ->   (3,0)   .1014
+Influence score for   (3,1) ->   (3,0)   .0300
+Influence score for   (4,1) ->   (4,0)   .2292
+Influence score for  (11,1) ->   (5,0)   .2315
+Influence score for   (5,1) ->   (5,0)   .2605
+Influence score for   (8,1) ->   (6,0)   .0070
+Influence score for   (6,1) ->   (6,0)   .0196
+Influence score for  (11,1) ->   (7,0)   .0059
+Influence score for   (7,1) ->   (7,0)   .4345
+Influence score for   (8,1) ->   (8,0)   .1048
+Influence score for   (7,1) ->   (8,0)   -.2147
+Influence score for   (9,1) ->   (9,0)   .0653
+Influence score for  (10,1) ->  (10,0)   .1426
+Influence score for   (7,1) ->  (10,0)   .1889
+Influence score for  (11,1) ->  (11,0)   .2563
+Influence score for   (7,1) ->  (11,0)   -.2991
+Influence score for  (12,1) ->  (12,0)   .0981
+Influence score for  (13,1) ->  (13,0)   .1121
+Influence score for  (14,1) ->  (14,0)   .1851
+Influence score for   (2,1) ->  (14,0)   .1969
+Influence score for   (0,1) ->  (14,0)   -.1958
+-----------------------------------------------------------------------------
+- Post-processing                                  DOT graphics format output
+-----------------------------------------------------------------------------
+digraph {
+node[shape=box];
+    0 [label="PPARG"];
+    2 [label="BCL6"];
+    3 [label="MAFB"];
+    5 [label="SNAI3"];
+    6 [label="EGR2"];
+    7 [label="ETS1"];
+    8 [label="STAT1"];
+    10 [label="NFYC"];
+    11 [label="IRF8"];
+    13 [label="PPARD"];
+    14 [label="SNAI1"];
+13->2[label=2185];
+7->3[label=1014];
+11->5[label=2315];
+8->6[label=70];
+11->7[label=59];
+7->8[arrowhead = dot, label=-2147];
+7->10[label=1889];
+7->11[arrowhead = dot, label=-2991];
+0->14[arrowhead = dot, label=-1958];
+2->14[label=1969];
+}
+
+-----------------------------------------------------------------------------
+- Post-processing                                            Influence scores
+-----------------------------------------------------------------------------
+
+Influence score for   (0,1) ->   (0,0)   .1151
+Influence score for   (1,1) ->   (1,0)   .1869
+Influence score for  (13,1) ->   (2,0)   .2185
+Influence score for   (2,1) ->   (2,0)   .1357
+Influence score for   (7,1) ->   (3,0)   .1014
+Influence score for   (3,1) ->   (3,0)   .0300
+Influence score for   (4,1) ->   (4,0)   .2292
+Influence score for   (5,1) ->   (5,0)   .1868
+Influence score for   (8,1) ->   (6,0)   .0070
+Influence score for   (6,1) ->   (6,0)   .0196
+Influence score for  (11,1) ->   (7,0)   .0059
+Influence score for   (7,1) ->   (7,0)   .4345
+Influence score for   (8,1) ->   (8,0)   .1048
+Influence score for   (7,1) ->   (8,0)   -.2147
+Influence score for   (9,1) ->   (9,0)   .0653
+Influence score for  (10,1) ->  (10,0)   .1426
+Influence score for   (7,1) ->  (10,0)   .1889
+Influence score for  (11,1) ->  (11,0)   .2563
+Influence score for   (7,1) ->  (11,0)   -.2991
+Influence score for  (12,1) ->  (12,0)   .0981
+Influence score for  (13,1) ->  (13,0)   .1121
+Influence score for  (14,1) ->  (14,0)   .1851
+Influence score for   (2,1) ->  (14,0)   .1969
+Influence score for   (0,1) ->  (14,0)   -.1958
+-----------------------------------------------------------------------------
+- Post-processing                                  DOT graphics format output
+-----------------------------------------------------------------------------
+digraph {
+node[shape=box];
+    0 [label="PPARG"];
+    2 [label="BCL6"];
+    3 [label="MAFB"];
+    6 [label="EGR2"];
+    7 [label="ETS1"];
+    8 [label="STAT1"];
+    10 [label="NFYC"];
+    11 [label="IRF8"];
+    13 [label="PPARD"];
+    14 [label="SNAI1"];
+13->2[label=2185];
+7->3[label=1014];
+8->6[label=70];
+11->7[label=59];
+7->8[arrowhead = dot, label=-2147];
+7->10[label=1889];
+7->11[arrowhead = dot, label=-2991];
+0->14[arrowhead = dot, label=-1958];
+2->14[label=1969];
+}
+
+-----------------------------------------------------------------------------
+- Post-processing                                            Influence scores
+-----------------------------------------------------------------------------
+
+Influence score for   (0,1) ->   (0,0)   .1151
+Influence score for   (1,1) ->   (1,0)   .1869
+Influence score for  (13,1) ->   (2,0)   .2185
+Influence score for   (2,1) ->   (2,0)   .1357
+Influence score for   (7,1) ->   (3,0)   .1014
+Influence score for   (3,1) ->   (3,0)   .0300
+Influence score for   (4,1) ->   (4,0)   .2292
+Influence score for   (5,1) ->   (5,0)   .1868
+Influence score for   (6,1) ->   (6,0)   .0257
+Influence score for  (11,1) ->   (7,0)   .0059
+Influence score for   (7,1) ->   (7,0)   .4345
+Influence score for   (8,1) ->   (8,0)   .1048
+Influence score for   (7,1) ->   (8,0)   -.2147
+Influence score for   (9,1) ->   (9,0)   .0653
+Influence score for  (10,1) ->  (10,0)   .1426
+Influence score for   (7,1) ->  (10,0)   .1889
+Influence score for  (11,1) ->  (11,0)   .2563
+Influence score for   (7,1) ->  (11,0)   -.2991
+Influence score for  (12,1) ->  (12,0)   .0981
+Influence score for  (13,1) ->  (13,0)   .1121
+Influence score for  (14,1) ->  (14,0)   .1851
+Influence score for   (2,1) ->  (14,0)   .1969
+Influence score for   (0,1) ->  (14,0)   -.1958
+-----------------------------------------------------------------------------
+- Post-processing                                  DOT graphics format output
+-----------------------------------------------------------------------------
+digraph {
+node[shape=box];
+    0 [label="PPARG"];
+    2 [label="BCL6"];
+    3 [label="MAFB"];
+    7 [label="ETS1"];
+    8 [label="STAT1"];
+    10 [label="NFYC"];
+    11 [label="IRF8"];
+    13 [label="PPARD"];
+    14 [label="SNAI1"];
+13->2[label=2185];
+7->3[label=1014];
+11->7[label=59];
+7->8[arrowhead = dot, label=-2147];
+7->10[label=1889];
+7->11[arrowhead = dot, label=-2991];
+0->14[arrowhead = dot, label=-1958];
+2->14[label=1969];
+}
+

@@ -1,0 +1,26 @@
+digraph {
+node[shape=box];
+    0 [label="PPARG"];
+    2 [label="BCL6"];
+    3 [label="MAFB"];
+    5 [label="SNAI3"];
+    6 [label="EGR2"];
+    7 [label="ETS1"];
+    8 [label="STAT1"];
+    10 [label="NFYC"];
+    11 [label="IRF8"];
+    13 [label="PPARD"];
+    14 [label="SNAI1"];
+7->0[label=66];
+13->2[label=2185];
+7->3[label=1014];
+11->5[label=2315];
+8->6[label=70];
+11->7[label=59];
+7->8[arrowhead = dot, label=-2147];
+7->10[label=1889];
+7->11[arrowhead = dot, label=-2991];
+0->14[arrowhead = dot, label=-1958];
+2->14[label=1969];
+}
+

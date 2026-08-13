@@ -1,0 +1,92 @@
+MODULE main
+
+  VAR
+
+		PPARG: {-1, 0, 1};
+		NFATC2: {-1, 0, 1};
+		BCL6: {-1, 0, 1};
+		MAFB: {-1, 0, 1};
+		PRDM1: {-1, 0, 1};
+		SNAI3: {-1, 0, 1};
+		EGR2: {-1, 0, 1};
+		ETS1: {-1, 0, 1};
+		STAT1: {-1, 0, 1};
+		FOS: {-1, 0, 1};
+
+
+    ASSIGN
+
+		init(PPARG) := {-1, 0};
+		init(NFATC2) := {-1, 0};
+		init(BCL6) := {-1, 0};
+		init(MAFB) := {-1, 0};
+		init(PRDM1) := {-1, 0};
+		init(SNAI3) := {-1, 0};
+		init(EGR2) := {-1, 0};
+		init(ETS1) := {-1, 0};
+		init(STAT1) := {-1, 0};
+		init(FOS) := {-1, 0};
+
+	 next(PPARG) := 
+		 case 
+ 			  66*ETS1 > 0  : 1; 
+ 			  66*ETS1 = 0  : 0; 
+ 			  66*ETS1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(NFATC2) := NFATC2;
+
+	 next(BCL6) := 
+		 case 
+ 			  4659*ETS1 +  5064*PRDM1 > 0  : 1; 
+ 			  4659*ETS1 +  5064*PRDM1 = 0  : 0; 
+ 			  4659*ETS1 +  5064*PRDM1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(MAFB) := 
+		 case 
+ 			  1014*ETS1 > 0  : 1; 
+ 			  1014*ETS1 = 0  : 0; 
+ 			  1014*ETS1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(PRDM1) := PRDM1;
+
+	 next(SNAI3) := 
+		 case 
+ 			  -278*PPARG > 0  : 1; 
+ 			  -278*PPARG = 0  : 0; 
+ 			  -278*PPARG < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(EGR2) := 
+		 case 
+ 			  70*STAT1 > 0  : 1; 
+ 			  70*STAT1 = 0  : 0; 
+ 			  70*STAT1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(ETS1) := 
+		 case 
+ 			  4147*PRDM1 > 0  : 1; 
+ 			  4147*PRDM1 = 0  : 0; 
+ 			  4147*PRDM1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(STAT1) := 
+		 case 
+ 			  -2147*ETS1 > 0  : 1; 
+ 			  -2147*ETS1 = 0  : 0; 
+ 			  -2147*ETS1 < 0  : -1; 
+ 			 
+ 		 esac; 
+
+	 next(FOS) := FOS;
+
+

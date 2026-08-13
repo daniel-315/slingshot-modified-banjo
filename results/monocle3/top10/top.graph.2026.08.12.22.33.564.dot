@@ -1,0 +1,13 @@
+digraph {
+node[shape=box];
+    0 [label="PPARG"];
+    3 [label="MAFB"];
+    6 [label="EGR2"];
+    7 [label="ETS1"];
+    8 [label="STAT1"];
+7->0[label=66];
+7->3[label=1014];
+8->6[label=70];
+7->8[arrowhead = dot, label=-2147];
+}
+

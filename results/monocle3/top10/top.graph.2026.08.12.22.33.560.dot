@@ -1,0 +1,20 @@
+digraph {
+node[shape=box];
+    0 [label="PPARG"];
+    2 [label="BCL6"];
+    3 [label="MAFB"];
+    4 [label="PRDM1"];
+    5 [label="SNAI3"];
+    6 [label="EGR2"];
+    7 [label="ETS1"];
+    8 [label="STAT1"];
+7->0[label=66];
+4->2[label=5064];
+7->2[label=4659];
+7->3[label=1014];
+0->5[arrowhead = dot, label=-278];
+8->6[label=70];
+4->7[label=4147];
+7->8[arrowhead = dot, label=-2147];
+}
+
