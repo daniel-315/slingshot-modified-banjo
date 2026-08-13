@@ -95,7 +95,13 @@ slingshot-modified-banjo/
         `-- all_networks/
 ~~~
 
-The folders `results/top10/` and `results/top15/` contain the original reported Banjo results.
+The Slingshot results are organized under `results/slingshot/`:
+
+- `results/slingshot/top10/` — Modified Banjo results for the 10-gene Slingshot analysis.
+- `results/slingshot/top15/` — Modified Banjo results for the 15-gene Slingshot analysis.
+- `results/slingshot/trajectory/` — Slingshot trajectory, pseudotime, PCA-by-time, and Cell 591 diagnostic figures.
+
+The corresponding Monocle 3 comparison results are organized under `results/monocle3/` with separate `top10/`, `top15/`, and `trajectory/` folders.
 
 When the provided run scripts are executed again, newly generated results are written separately under `results/reproduced/`.
 
@@ -529,7 +535,7 @@ New results are written to:
 
 The original reported results remain under:
 
-    results/top10/
+    results/slingshot/top10/
 
 ---
 
@@ -553,7 +559,7 @@ Newly reproduced results are written to:
 
 The original reported results remain under:
 
-    results/top15/
+    results/slingshot/top15/
 
 ---
 
@@ -635,11 +641,11 @@ The Top-10 results therefore contain two network outputs.
 
 They are preserved under:
 
-    results/top10/all_networks/
+    results/slingshot/top10/all_networks/
 
 The full Banjo report is:
 
-    results/top10/banjo_full_report.txt
+    results/slingshot/top10/banjo_full_report.txt
 
 The highest-scoring Top-10 network had a Banjo score of approximately:
 
@@ -671,11 +677,11 @@ The five network scores were approximately:
 
 The full set of Top-15 outputs is stored under:
 
-    results/top15/all_networks/
+    results/slingshot/top15/all_networks/
 
 The full Banjo report is:
 
-    results/top15/banjo_full_report.txt
+    results/slingshot/top15/banjo_full_report.txt
 
 All five returned network results were preserved rather than keeping only Network 1.
 
@@ -708,8 +714,8 @@ The repository deliberately separates the exact original results from new runs.
 
 Original results:
 
-    results/top10/
-    results/top15/
+    results/slingshot/top10/
+    results/slingshot/top15/
 
 Results from a new execution:
 
@@ -728,8 +734,8 @@ Because of this, running the same five-minute analysis again may not always prod
 
 For that reason, the exact outputs produced for this project have been preserved in:
 
-    results/top10/
-    results/top15/
+    results/slingshot/top10/
+    results/slingshot/top15/
 
 The reproduced-output directories are intended for newly executed runs.
 
