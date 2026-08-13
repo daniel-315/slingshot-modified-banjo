@@ -51,8 +51,8 @@ slingshot-modified-banjo/
 |
 |-- README.md
 |-- compile_banjo.sh
-|-- run_top10.sh
-|-- run_top15.sh
+|-- run_slingshot_top10.sh
+|-- run_slingshot_top15.sh
 |
 |-- modified_banjo/
 |   |-- source/
@@ -508,7 +508,7 @@ to compile the older Banjo Java code with Java 8 compatibility.
 
 From the repository root, run:
 
-    ./run_top10.sh
+    ./run_slingshot_top10.sh
 
 The script:
 
@@ -537,7 +537,7 @@ The original reported results remain under:
 
 Run:
 
-    ./run_top15.sh
+    ./run_slingshot_top15.sh
 
 The same process is used with:
 
@@ -783,7 +783,7 @@ Verify:
 
 Run:
 
-    chmod +x compile_banjo.sh run_top10.sh run_top15.sh
+    chmod +x compile_banjo.sh run_slingshot_top10.sh run_slingshot_top15.sh
 
 Then try the script again.
 
@@ -820,14 +820,14 @@ When running the provided shell scripts from the repository directory, WSL/Linux
 For example, use:
 
     ./compile_banjo.sh
-    ./run_top10.sh
-    ./run_top15.sh
+    ./run_slingshot_top10.sh
+    ./run_slingshot_top15.sh
 
 rather than:
 
     compile_banjo.sh
-    run_top10.sh
-    run_top15.sh
+    run_slingshot_top10.sh
+    run_slingshot_top15.sh
 
 The `./` prefix tells the Linux shell to execute the script located in the current directory.
 
@@ -835,9 +835,9 @@ This applies to the included shell scripts. The Java executable itself is still 
 
     java
 
-If a command such as `run_top10.sh` is reported as "command not found" even though the file is present, first try:
+If a command such as `run_slingshot_top10.sh` is reported as "command not found" even though the file is present, first try:
 
-    ./run_top10.sh
+    ./run_slingshot_top10.sh
 
 Also make sure you are inside the repository directory:
 
@@ -863,11 +863,11 @@ Compile Banjo:
 
 Run Top 10:
 
-    ./run_top10.sh
+    ./run_slingshot_top10.sh
 
 Run Top 15:
 
-    ./run_top15.sh
+    ./run_slingshot_top15.sh
 
 The reproduced networks will then appear under:
 
